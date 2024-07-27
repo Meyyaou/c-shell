@@ -23,3 +23,14 @@ more seriously:
 2 - Performance: C offers excellent performance, crucial for a responsive shell.
 3 - Learning Experience: Implementing a shell in C provides deep insights into operating system concepts.
 4 - Historical Context: Many real-world shells are written in C, making it a authentic choice for this project.
+
+# How to compile it:
+copy the code here and run:  
+https://www.onlinegdb.com/
+  
+for more details and infos, check the inspirations:  
+https://brennan.io/2015/01/16/write-a-shell-in-c/  
+https://github.com/brenns10/lsh?tab=readme-ov-file  
+some articles:  
+https://medium.com/@nyangaresibrian/simple-shell-b7014425601f#:~:text=4-,How%20does%20a%20shell%20work%3F,on%20the%20underlying%20operating%20system.  
+https://medium.com/@muxanz/how-the-shell-works-internally-when-entering-a-command-42f08458870
