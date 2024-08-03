@@ -1,5 +1,5 @@
 c-shell
-an experimentaion of shells with c (a seashell haha)
+an experimentaion of shells with c (a seashell haha) -all following a tutorial, might add more to it later?
 
 # c-shell
 
