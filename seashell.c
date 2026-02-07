@@ -4,32 +4,6 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-int main(int argc, char **argv){
-	seashell_loop();
-	return EXIT_SUCCESS;
-	}
-	
-
-void seashell_loop(void){
-	//declaration bloc
-	char *line;
-	char **args;
-	int status;
-	
-	do{
-		//prompt printing
-		printf("> ");
-		//reads line cmd
-		line=seashell_read_line();
-		//split args
-		args=seashell_split_line(line);
-		//exectue args
-		status=seashell_exe(args);
-		
-		free(line);
-		free(args);
-	}while (status);
-}
 
 //const
 #define SEASHELL_RL_BUFSIZE 1024
@@ -95,7 +69,7 @@ char **seashell_split_line(char *line){
 		pos++;
 	if (pos>= buffersize){
 		buffersize +=SEASHELL_TOKKEN_BUFSIZE;
-		tokkens=realloc(tokkens, bufsize * sizeof(char*));
+		tokkens=realloc(tokkens, buffersize * sizeof(char*));
 		if (!tokkens){
 			fprintf(stderr, "seashell: allocation error\n");
     		exit(EXIT_FAILURE);
@@ -126,7 +100,7 @@ int seashell_launch(char **args){
 		do{
 			//basic process managements with signals and waits
 			wpid=waitpid(pid, &status, WUNTRACED);
-		}while(!WIFEXITED(status)&& !WIFSIGNALED(staus));
+		}while(!WIFEXITED(status)&& !WIFSIGNALED(status));
 	}
 	return 1;
 }
@@ -186,7 +160,7 @@ int seashell_help(char **args)
   return 1;
 }
 
-int seashelllsh_exit(char **args)
+int seashell_exit(char **args)
 {
   return 0;
 }
@@ -204,3 +178,30 @@ int seashell_exe(char **args){
 	}
 	return seashell_launch(args);
 }
+
+
+void seashell_loop(void){
+	//declaration bloc
+	char *line;
+	char **args;
+	int status;
+	
+	do{
+		//prompt printing
+		printf("> ");
+		//reads line cmd
+		line=seashell_read_line();
+		//split args
+		args=seashell_split_line(line);
+		//exectue args
+		status=seashell_exe(args);
+		
+		free(line);
+		free(args);
+	}while (status);
+}
+
+int main(int argc, char **argv){
+	seashell_loop();
+	return EXIT_SUCCESS;
+	}	
